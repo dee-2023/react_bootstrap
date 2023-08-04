@@ -1,0 +1,55 @@
+import React, { useState } from 'react';
+
+const Calculator = () => {
+    const [num1, setNum1] = useState('');
+    const [num2, setNum2] = useState('');
+    const [result, setResult] = useState('');
+
+    const handleNum1Change = (event) => {
+        setNum1(event.target.value);
+    };
+
+    const handleNum2Change = (event) => {
+        setNum2(event.target.value);
+    };
+
+    const handleAdd = () => {
+        setResult(Number(num1) + Number(num2));
+    };
+
+    const handleSubtract = () => {
+        setResult(Number(num1) - Number(num2));
+    };
+
+    const handleMultiply = () => {
+        setResult(Number(num1) * Number(num2));
+    };
+
+    const handleDivide = () => {
+        setResult(Number(num1) / Number(num2));
+    };
+
+    return (
+        <div className="container mt-4">
+            <form>
+                <div className="mb-3">
+                    <label htmlFor="num1" className="form-label">Number 1:</label>
+                    <input type="number" className="form-control" id="num1" value={num1} onChange={handleNum1Change} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="num2" className="form-label">Number 2:</label>
+                    <input type="number" className="form-control" id="num2" value={num2} onChange={handleNum2Change} />
+                </div>
+                <div className="mb-3">
+                    <button type="button" className="btn btn-primary me-2" onClick={handleAdd}>Add</button>
+                    <button type="button" className="btn btn-primary me-2" onClick={handleSubtract}>Subtract</button>
+                    <button type="button" className="btn btn-primary me-2" onClick={handleMultiply}>Multiply</button>
+                    <button type="button" className="btn btn-primary" onClick={handleDivide}>Divide</button>
+                </div>
+            </form>
+        {result && <div className="mt-4">Result: {result}</div>}
+        </div>
+  );
+};
+
+export default Calculator;
